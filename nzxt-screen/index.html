@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      .container {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+        transform-origin: 0 0;
+      }
+
+      .video {
+        width: 100vw;
+        height: 100vh;
+        transform: scale(1.8);
+        transform-origin: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <iframe
+        id="video"
+        class="video"
+        width="640"
+        height="640"
+        src="https://www.youtube.com/embed/Ps-0f0K6izM?autoplay=1&amp;loop=1&amp;controls=0&amp;mute=1"
+        allow="autoplay;mute;fullscreen"
+        frameborder="0"
+        allowfullscreen=""
+      ></iframe>
+    </div>
+
+    <script type="text/javascript">
+      const youtubeEmbedRoot =
+        "https://www.youtube.com/embed/1km9XQSc0Yw?autoplay=1&loop=1&controls=0&mute=1";
+      const params = new URL(window.location.href).searchParams;
+      const viewstate = params.get("viewstate") || 640;
+
+      const video = window.document.getElementById("video");
+      video.setAttribute("width", viewstate);
+      video.setAttribute("height", viewstate);
+
+      const videoId = params.get("video") || "Ps-0f0K6izM";
+      const youtubeUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&controls=0&mute=1`;
+      video.setAttribute("src", youtubeUrl);
+    </script>
+  </body>
+</html>
